@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard - Shortlink</title>
+  <link rel="stylesheet" href="/static/css/dashboard.css" />
+</head>
+
+<body>
+
+  <div class="container">
+    <header class="header">
+      <h1>Shortlink Dashboard</h1>
+      <a href="/logout" class="logout">Logout</a>
+    </header>
+
+    {{if .Message}}
+    <div class="alert success">
+      {{.Message}}
+    </div>
+    {{end}}
+
+    {{if .Error}}
+    <div class="alert error">
+      {{.Error}}
+    </div>
+    {{end}}
+
+    <section class="card">
+      <h2>Generate Shortlink</h2>
+
+      <form method="POST" action="/dashboard">
+        <div class="form-group">
+          <label for="original_url">Original URL</label>
+          <input type="url" id="original_url" name="original_url" placeholder="https://example.com" required />
+        </div>
+
+        <button type="submit">Generate</button>
+      </form>
+    </section>
+
+    {{if .ShortURL}}
+    <section class="card result">
+      <h3>Shortlink Created</h3>
+      <input type="text" value="{{.ShortURL}}" readonly />
+    </section>
+    {{end}}
+  </div>
+
+</body>
+
+</html>

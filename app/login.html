@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In | shortlink</title>
+  <link rel="stylesheet" href="/static/css/auth.css">
+</head>
+
+<body>
+  <div class="container">
+
+    {{if .Success}}
+    <div class="alert success">
+      {{.Message}}
+    </div>
+    {{end}}
+
+    {{if .Error}}
+    <div class="alert error">
+      {{.Message}}
+    </div>
+    {{end}}
+
+
+
+    <section class="card">
+      <h2>Sign Ip</h2>
+
+      <form method="POST">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label>Password:</label>
+          <input type="password" name="password" required>
+        </div>
+        <button type="submit">Sign Up</button>
+      </form>
+      <p>Already have account? <a href="/signup">Sign Up here</a></p>
+    </section>
+  </div>
+</body>
+
+</html>
