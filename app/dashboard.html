@@ -43,7 +43,11 @@
     {{if .ShortURL}}
     <section class="card result">
       <h3>Shortlink Created</h3>
-      <input type="text" value="{{.ShortURL}}" readonly />
+      <input type="text" value="{{.NewLink}}" readonly />
+    </section>
+    {{else}}
+    <section>
+      <h3>Shortlin </h3>
     </section>
     {{end}}
   </div>

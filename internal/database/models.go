@@ -11,6 +11,15 @@ import (
 	"github.com/google/uuid"
 )
 
+type Link struct {
+	ID        uuid.UUID
+	CreatedAt time.Time
+	UpdatedAt time.Time
+	Code      string
+	LinkUrl   string
+	UserID    uuid.UUID
+}
+
 type RefreshToken struct {
 	Token     string
 	CreatedAt time.Time

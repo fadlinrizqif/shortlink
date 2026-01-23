@@ -56,6 +56,7 @@ func main() {
 	mux.HandleFunc("/login", http.HandlerFunc(userHandler.LoginUsers))
 	mux.HandleFunc("/logout", http.HandlerFunc(userHandler.LogoutUsers))
 	mux.Handle("/dashboard", middleware.AuthMiddlware(http.HandlerFunc(linkHandler.HandlerLink), &authConfig))
+	mux.HandleFunc("/{codeLink}", http.HandlerFunc(linkHandler.RedirectLink))
 
 	server := http.Server{
 		Handler: mux,

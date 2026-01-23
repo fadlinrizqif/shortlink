@@ -100,3 +100,13 @@ func MakeRefreshToken() (string, error) {
 
 	return hex.EncodeToString(key), nil
 }
+
+func MakeLinkCode() (string, error) {
+	key := make([]byte, 2)
+	_, err := rand.Read(key)
+	if err != nil {
+		return "", err
+	}
+
+	return hex.EncodeToString(key), nil
+}
