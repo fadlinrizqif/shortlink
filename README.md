@@ -21,7 +21,7 @@ Shortlink service adalah projek yang saya buat menggunakan Bahasa pemrograman Go
 - Cookies base authentication
 
 ## Project Stucture
-
+```text
 ├── app                 # HTML Template folder
 │   ├── dashboard.html  # Dashboard page for shorten the URL
 │   ├── sigup.html      # Register page for new user
@@ -37,6 +37,7 @@ Shortlink service adalah projek yang saya buat menggunakan Bahasa pemrograman Go
 │   └── schema        # migration for database using Goose
 └── static
     └── css           # styling
+```
 
 ## How to run 
 ```bash
