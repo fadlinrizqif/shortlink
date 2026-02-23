@@ -49,11 +49,13 @@ func main() {
 
 	userHandler := handlers.NewUserHandlers(ApiConfig)
 	linkHandler := handlers.NewLinkHandler(ApiConfig)
+	refreshHandler := handlers.NewAuthHandler(ApiConfig)
 
 	mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
 	mux.HandleFunc("/signup", http.HandlerFunc(userHandler.CreateUsers))
 	mux.HandleFunc("/login", http.HandlerFunc(userHandler.LoginUsers))
+	mux.HandleFunc("/auth/refresh", http.HandlerFunc(refreshHandler.CheckRefreshToken))
 	mux.HandleFunc("/logout", http.HandlerFunc(userHandler.LogoutUsers))
 	mux.Handle("/dashboard", middleware.AuthMiddlware(http.HandlerFunc(linkHandler.HandlerLink), &authConfig))
 	mux.HandleFunc("/{codeLink}", http.HandlerFunc(linkHandler.RedirectLink))

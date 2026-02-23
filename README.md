@@ -33,7 +33,7 @@ Shortlink service adalah projek yang saya buat menggunakan Bahasa pemrograman Go
 │   ├── middleware    # authentication middleware
 │   └── app           # shared config
 ├── sql
-    ├── queries       # query to database 
+│   ├── queries       # query to database 
 │   └── schema        # migration for database using Goose
 └── static
     └── css           # styling

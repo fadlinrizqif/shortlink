@@ -141,7 +141,7 @@ func (h *UserHandler) LoginUsers(w http.ResponseWriter, r *http.Request) {
 	http.SetCookie(w, &http.Cookie{
 		Name:     "refresh_token",
 		Value:    getRefreshToken,
-		Path:     "/auth/refresh",
+		Path:     "/",
 		HttpOnly: true,
 		Secure:   secure,
 		SameSite: http.SameSiteLaxMode,
@@ -155,6 +155,7 @@ func (h *UserHandler) LogoutUsers(w http.ResponseWriter, r *http.Request) {
 	refreshToken, err := r.Cookie("refresh_token")
 	if err == nil {
 		_ = h.App.DB.UpdateRefreshToken(r.Context(), refreshToken.Value)
+
 	}
 
 	secure := r.TLS != nil
@@ -172,7 +173,7 @@ func (h *UserHandler) LogoutUsers(w http.ResponseWriter, r *http.Request) {
 	http.SetCookie(w, &http.Cookie{
 		Name:     "refresh_token",
 		Value:    "",
-		Path:     "/auth/refresh",
+		Path:     "/",
 		HttpOnly: true,
 		Secure:   secure,
 		SameSite: http.SameSiteLaxMode,
