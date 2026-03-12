@@ -1,0 +1,24 @@
+# Source Control
+.git
+
+# Go Binaries & Cache
+main
+main.exe
+bin/
+pkg/
+
+# Environment and Secrets
+#.env
+#.env.*
+#!.env.example # Tetap sertakan contoh jika perlu
+
+# Logs
+*.log
+
+# IDEs
+.vscode/
+.idea/
+
+# Docker
+Dockerfile
+docker-compose*

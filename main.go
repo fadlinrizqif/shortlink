@@ -53,6 +53,10 @@ func main() {
 
 	mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "/dashboard", http.StatusMovedPermanently)
+	})
+
 	mux.HandleFunc("/signup", http.HandlerFunc(userHandler.CreateUsers))
 	mux.HandleFunc("/login", http.HandlerFunc(userHandler.LoginUsers))
 	mux.HandleFunc("/auth/refresh", http.HandlerFunc(refreshHandler.CheckRefreshToken))

@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/fadlinrizqif/shortlink/internal/auth"
@@ -16,6 +17,7 @@ func AuthMiddlware(next http.Handler, config *AuthConfig) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		getToken, err := r.Cookie("access_token")
 		if err != nil {
+			log.Print(err)
 			http.Redirect(w, r, "/login", http.StatusSeeOther)
 			return
 		}
